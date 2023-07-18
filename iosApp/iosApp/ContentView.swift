@@ -1,13 +1,10 @@
 import SwiftUI
-import shared
+//import shared
 
 struct ContentView: View {
-    private let root: RootComponent
-    init(_ root: RootComponent) {
-            self.root = root
-    }
+	//let greet = Greeting().greet()
 
 	var body: some View {
-		ComposeView(root)
+		ComposeView()
 	}
 }
