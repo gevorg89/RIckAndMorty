@@ -8,7 +8,7 @@
 
 import Foundation
 import SwiftUI
-import shared
+import common.umbrella
 
 
 struct ComposeView: UIViewControllerRepresentable{
