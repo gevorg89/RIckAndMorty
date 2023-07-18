@@ -24,8 +24,8 @@ kotlin {
         it.binaries.framework {
 
             baseName = "shared"
-            //isStatic = true
-            //binaryOption("bundleId", "com.example.common.umbrella")
+            isStatic = true
+            binaryOption("bundleId", "com.example.common.umbrella")
             println("SDFsds " + this.baseName)
         }
     }
