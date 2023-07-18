@@ -8,14 +8,15 @@
 
 import Foundation
 import SwiftUI
-import shared
+import common.umbrella
 
 
 struct ComposeView: UIViewControllerRepresentable{
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
     }
-    
+
     func makeUIViewController(context: Context) -> some UIViewController {
         AppKt.MainViewController()
+        //UITextView(frame: CGRect(x: 10, y: 20, width: 100, height: 100))
     }
 }

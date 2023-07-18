@@ -1,5 +1,6 @@
 package com.gevorg89.rickandmorty.android
 
+import App
 import TestUser
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -15,7 +16,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyApplicationTheme {
-                Text(text = TestUser().hello())
+                App()
+                //Text(text = TestUser().hello())
             }
         }
     }
@@ -26,10 +28,10 @@ fun GreetingView(text: String) {
     Text(text = text)
 }
 
-@Preview
-@Composable
-fun DefaultPreview() {
-    MyApplicationTheme {
-        GreetingView("Hello, Android!")
-    }
-}
+//@Preview
+//@Composable
+//fun DefaultPreview() {
+//    MyApplicationTheme {
+//        GreetingView("Hello, Android!")
+//    }
+//}
