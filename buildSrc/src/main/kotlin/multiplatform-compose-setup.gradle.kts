@@ -31,7 +31,16 @@ kotlin {
     }
 
     sourceSets {
-        named("commonMain") {
+//        named("commonMain") {
+//            dependencies {
+//                implementation(compose.runtime)
+//                implementation(compose.foundation)
+//                implementation(compose.material)
+//                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+//                implementation(compose.components.resources)
+//            }
+//        }
+        val commonMain by getting {
             dependencies {
                 implementation(compose.runtime)
                 implementation(compose.foundation)
@@ -40,5 +49,6 @@ kotlin {
                 implementation(compose.components.resources)
             }
         }
+        val iosMain by commonMain()
     }
 }
