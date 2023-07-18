@@ -1,5 +1,6 @@
 package com.gevorg89.rickandmorty.android
 
+import TestUser
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -8,15 +9,13 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.gevorg89.rickandmorty.App
-import com.gevorg89.rickandmorty.Greeting
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MyApplicationTheme {
-                App()
+                Text(text = TestUser().hello())
             }
         }
     }
