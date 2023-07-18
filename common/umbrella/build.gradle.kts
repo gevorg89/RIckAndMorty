@@ -1,4 +1,5 @@
 plugins {
+    kotlin("multiplatform")
     id("multiplatform-compose-setup")
     id("android-setup").apply(false)
 }

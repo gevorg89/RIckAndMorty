@@ -8,7 +8,7 @@
 
 import Foundation
 import SwiftUI
-import common.umbrella
+import shared
 
 
 struct ComposeView: UIViewControllerRepresentable{
@@ -17,6 +17,5 @@ struct ComposeView: UIViewControllerRepresentable{
 
     func makeUIViewController(context: Context) -> some UIViewController {
         AppKt.MainViewController()
-        //UITextView(frame: CGRect(x: 10, y: 20, width: 100, height: 100))
     }
 }
