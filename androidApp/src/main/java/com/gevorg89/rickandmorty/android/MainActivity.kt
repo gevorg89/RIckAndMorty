@@ -1,24 +1,35 @@
 package com.gevorg89.rickandmorty.android
 
-import AndroidApp
-import DefaultRootComponent
-import PlatformSDK
+import TestUser
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.arkivanov.decompose.defaultComponentContext
-import platform.PlatformConfiguration
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        PlatformSDK.init(PlatformConfiguration(this))
-        val root = DefaultRootComponent(defaultComponentContext())
         setContent {
             MyApplicationTheme {
-                AndroidApp(root)
+                Text(text = TestUser().hello())
             }
         }
     }
+}
 
+@Composable
+fun GreetingView(text: String) {
+    Text(text = text)
+}
+
+@Preview
+@Composable
+fun DefaultPreview() {
+    MyApplicationTheme {
+        GreetingView("Hello, Android!")
+    }
 }

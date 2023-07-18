@@ -32,6 +32,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "RIckAndMorty"
 include(":androidApp")
+include(":shared")
 include("common:core")
 
 include("common:character:api")

@@ -8,46 +8,12 @@ kotlin {
     android()
     ios()
 
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
-
-            baseName = "shared"
-            isStatic = true
-            binaryOption("bundleId", "common.umbrella")
-            export(Dependencies.Decompose.decompose)
-            export(Dependencies.Decompose.essentyLifecycle)
-            export(Dependencies.Decompose.essentyStateKeeper)
-        }
-    }
-
     sourceSets {
-        val commonMain by getting {
+        named("commonMain") {
             dependencies {
                 implementation(compose.runtime)
-                implementation(compose.ui)
                 implementation(compose.foundation)
                 implementation(compose.material)
-                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
-                implementation(compose.components.resources)
-
-                api(Dependencies.Decompose.decompose)
-                api(Dependencies.Decompose.extension)
-            }
-        }
-        val iosX64Main by getting
-        val iosArm64Main by getting
-        val iosSimulatorArm64Main by getting
-        val iosMain by getting {
-            dependsOn(commonMain)
-            iosX64Main.dependsOn(this)
-            iosArm64Main.dependsOn(this)
-            iosSimulatorArm64Main.dependsOn(this)
-
-            dependencies {
             }
         }
     }
