@@ -7,14 +7,6 @@ plugins {
 kotlin {
     android()
     ios()
-//    ios {
-//        binaries {
-//            framework {
-//                baseName = "shared"
-//                isStatic = true
-//            }
-//        }
-//    }
 
     listOf(
         iosX64(),
@@ -26,20 +18,10 @@ kotlin {
             baseName = "shared"
             isStatic = true
             binaryOption("bundleId", "com.example.common.umbrella")
-            println("SDFsds " + this.baseName)
         }
     }
 
     sourceSets {
-//        named("commonMain") {
-//            dependencies {
-//                implementation(compose.runtime)
-//                implementation(compose.foundation)
-//                implementation(compose.material)
-//                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
-//                implementation(compose.components.resources)
-//            }
-//        }
         val commonMain by getting {
             dependencies {
                 implementation(compose.runtime)
@@ -49,6 +31,18 @@ kotlin {
                 implementation(compose.components.resources)
             }
         }
-        val iosMain by commonMain()
+        val iosX64Main by getting
+        val iosArm64Main by getting
+        val iosSimulatorArm64Main by getting
+        val iosMain by getting {
+            dependsOn(commonMain)
+            iosX64Main.dependsOn(this)
+            iosArm64Main.dependsOn(this)
+            iosSimulatorArm64Main.dependsOn(this)
+
+            dependencies {
+
+            }
+        }
     }
 }
