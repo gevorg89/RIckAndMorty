@@ -32,9 +32,6 @@ object Dependencies {
         const val logging = "io.ktor:ktor-client-logging:$version"
         const val android = "io.ktor:ktor-client-android:$version"
         const val okhttp = "io.ktor:ktor-client-okhttp:$version"
-
-        //const val json = "io.ktor:ktor-serialization-kotlinx-json:$version"
-
     }
 
     object SqlDelight {

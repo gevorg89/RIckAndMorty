@@ -11,6 +11,7 @@ import io.ktor.client.features.logging.Logger
 import io.ktor.client.features.logging.Logging
 import io.ktor.client.features.logging.SIMPLE
 import io.ktor.client.request.url
+import io.ktor.http.URLProtocol
 import org.kodein.di.DI
 import org.kodein.di.bind
 import org.kodein.di.singleton
@@ -33,7 +34,10 @@ internal val ktorModule = DI.Module("ktorModule") {
             }
 
             defaultRequest {
-                url("https://rickandmortyapi.com/")
+                url {
+                    protocol = URLProtocol.HTTPS
+                    host = "rickandmortyapi.com/"
+                }
             }
         }
     }
