@@ -11,6 +11,7 @@ kotlin {
             dependencies {
                 implementation(project(":common:core"))
                 implementation(project(":common:character:data"))
+//                api("org.kodein.di:kodein-di-framework-compose:7.20.2")
             }
         }
 
