@@ -15,6 +15,6 @@ struct ComposeView: UIViewControllerRepresentable{
     }
 
     func makeUIViewController(context: Context) -> some UIViewController {
-        AppKt.MainViewController()
+        IosAppKt.MainViewController()
     }
 }
