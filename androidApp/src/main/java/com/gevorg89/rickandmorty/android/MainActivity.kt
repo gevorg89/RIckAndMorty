@@ -4,6 +4,8 @@ import AndroidApp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import org.kodein.di.DI
+import org.kodein.di.DIAware
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,4 +17,6 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+//    override val di: DI by di()
 }
