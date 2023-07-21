@@ -14,14 +14,13 @@ object Dependencies {
         }
 
         object Coroutines {
-            private const val version = "1.6.0"
+            private const val version = "1.7.2"
             const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
         }
     }
 
     object Compose {
-        private const val version = "1.4.0"
-        const val gradlePlugin = "org.jetbrains.compose:compose-gradle-plugin:$version"
+        const val gradlePlugin = "org.jetbrains.compose:compose-gradle-plugin:1.4.0"
     }
 
     object Ktor {

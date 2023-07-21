@@ -1,5 +1,7 @@
 import androidx.compose.ui.window.ComposeUIViewController
+import platform.PlatformConfiguration
 
-fun MainViewController(root: RootComponent) = ComposeUIViewController {
-    App(root)
+fun MainViewController() = ComposeUIViewController {
+    //PlatformSDK.init(PlatformConfiguration())
+    App()
 }
