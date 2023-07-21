@@ -2,34 +2,25 @@ package ktor
 
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.HttpTimeout
-import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest
-import io.ktor.client.plugins.logging.LogLevel
-import io.ktor.client.plugins.logging.Logger
-import io.ktor.client.plugins.logging.Logging
-import io.ktor.client.plugins.logging.SIMPLE
-import io.ktor.serialization.kotlinx.json.json
-import kotlinx.serialization.json.Json
+import io.ktor.client.request.url
+import io.ktor.util.logging.Logger
 import org.kodein.di.DI
 import org.kodein.di.bind
+import org.kodein.di.instance
 import org.kodein.di.singleton
 
 internal val ktorModule = DI.Module("ktorModule") {
     bind<HttpClient>() with singleton {
         HttpClient(HttpEngineFactory().createEngine()) {
-            install(Logging) {
-                logger = Logger.SIMPLE
-                level = LogLevel.ALL
-            }
+//            install(Logging) {
+//                logger = Logger.SIMPLE
+//                level = LogLevel.ALL
+//            }
 
-            install(ContentNegotiation) {
-                json(
-                    Json {
-                        prettyPrint = true
-                        isLenient = true
-                    }
-                )
-            }
+//            install(JsonFeature) {
+//                serializer = KotlinxSerializer(json = instance())
+//            }
 
             install(HttpTimeout) {
                 connectTimeoutMillis = 15000
@@ -37,7 +28,8 @@ internal val ktorModule = DI.Module("ktorModule") {
             }
 
             defaultRequest {
-                url("https://rickandmortyapi.com/")
+                //TODO
+                url("")
             }
         }
     }

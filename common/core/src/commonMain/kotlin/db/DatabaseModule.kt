@@ -1,12 +1,12 @@
 package db
 
-import core.database.AppDatabase
 import org.kodein.di.DI
-import org.kodein.di.bindSingleton
+import org.kodein.di.bind
 import org.kodein.di.instance
+import org.kodein.di.singleton
 
 internal val dataBaseModule = DI.Module("dataBaseModule") {
-    bindSingleton {
-        DbDriverFactory(instance()).createDriver(AppDatabase.Schema, "rickandmorty.db")
+    bind<DbDriverFactory>() with singleton {
+        DbDriverFactory(instance())
     }
 }

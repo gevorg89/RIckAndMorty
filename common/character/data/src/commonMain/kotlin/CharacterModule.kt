@@ -1,8 +1,6 @@
-import core.database.AppDatabase
 import ktor.KtorCharacterDataSource
 import org.kodein.di.DI
 import org.kodein.di.bind
-import org.kodein.di.bindSingleton
 import org.kodein.di.instance
 import org.kodein.di.provider
 import org.kodein.di.singleton
@@ -15,7 +13,7 @@ val characterModule = DI.Module("characterModule") {
     }
 
     bind<KtorSqlDelightDataSource>() with provider {
-        KtorSqlDelightDataSource(AppDatabase(instance()))
+        KtorSqlDelightDataSource()
     }
 
     bind<CharacterRepository>() with singleton {

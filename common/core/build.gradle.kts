@@ -2,7 +2,6 @@ plugins {
     id("multiplatform-setup")
     id("android-setup").apply(false)
     kotlin("plugin.serialization")
-    id("com.squareup.sqldelight")
 }
 
 kotlin {
@@ -21,8 +20,6 @@ kotlin {
                 api(Dependencies.Kodein.core)
 
                 api(Dependencies.SqlDelight.core)
-
-                api(Dependencies.Kamel.kamel)
             }
         }
 
@@ -43,16 +40,13 @@ kotlin {
     }
 }
 
-sqldelight {
-    database("AppDatabase") {
-        packageName = "core.database"
-        sourceFolders = listOf("sqldelight")
-    }
-}
-
 android {
     namespace = "com.gevorg89.rickandmorty.core"
     compileSdk = 33
+    defaultConfig {
+        minSdk = 24
+        targetSdk = 33
+    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
