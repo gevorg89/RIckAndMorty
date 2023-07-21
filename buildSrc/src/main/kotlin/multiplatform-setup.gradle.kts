@@ -6,19 +6,11 @@ plugins {
 kotlin {
     android()
     ios()
+    iosX64()
+    iosArm64()
+    iosSimulatorArm64()
 
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
 
-            baseName = "shared"
-            isStatic = true
-            binaryOption("bundleId", "com.example.common.umbrella")
-        }
-    }
 //
 //    sourceSets {
 //        val commonMain by getting {
