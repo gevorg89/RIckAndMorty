@@ -1,10 +1,23 @@
 package ktor
 
+import Character
+import CharacterRemote
 import io.ktor.client.HttpClient
-import models.Character
+import io.ktor.client.request.get
+import io.ktor.client.request.url
+import mappers.toDomain
 
-class KtorCharacterDataSource (val httpClient: HttpClient) {
+class KtorCharacterDataSource (private val httpClient: HttpClient) {
     suspend fun fetch() : List<Character> {
-        return emptyList()
+        return runCatching {
+            val character = httpClient.get<CharacterRemote> {
+                url {
+                    encodedPath = "api/character"
+                }
+            }
+            character.results.map { it.toDomain() }
+        }.onFailure {
+            emptyList<Character>()
+        }.getOrThrow()
     }
 }

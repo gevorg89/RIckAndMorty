@@ -1,0 +1,3 @@
+fun CharacterRemote.toDomain() {
+
+}

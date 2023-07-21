@@ -1,3 +1,8 @@
-package models
 
-data class Character(val name: String)
+
+
+data class Character (
+
+  val name: String
+
+)

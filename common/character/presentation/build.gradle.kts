@@ -1,14 +1,13 @@
 plugins {
-    id("multiplatform-setup")
+    id("multiplatform-compose-setup")
     id("android-setup").apply(false)
-    kotlin("plugin.serialization")
 }
 
 kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                api(project(":common:character:api"))
+                implementation(project(":common:character:data"))
                 implementation(project(":common:core"))
             }
         }
@@ -16,7 +15,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.gevorg89.rickandmorty.character.data"
+    namespace = "com.gevorg89.rickandmorty.character.presentation"
     compileSdk = 33
     defaultConfig {
         minSdk = 24
