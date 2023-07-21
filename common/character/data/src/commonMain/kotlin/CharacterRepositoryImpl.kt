@@ -1,5 +1,4 @@
 import ktor.KtorCharacterDataSource
-import models.Character
 import sqldelight.KtorSqlDelightDataSource
 
 class CharacterRepositoryImpl(

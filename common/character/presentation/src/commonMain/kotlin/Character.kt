@@ -1,50 +1,35 @@
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Card
 import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import com.arkivanov.decompose.extensions.compose.jetbrains.subscribeAsState
-import decompose.DetailsComponent
-import io.kamel.image.KamelImage
-import io.kamel.image.asyncPainterResource
+import di.Inject
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
+import kotlinx.coroutines.launch
 
 @Composable
-fun Character(component: DetailsComponent) {
-    val state by component.model.subscribeAsState()
-    val character = state.item
-    if (character != null) {
-        Column(modifier = Modifier.fillMaxSize()) {
-            TopAppBar(
-                title = {
-                    Text(character.name)
-                },
-                navigationIcon = {
-                    IconButton(onClick = { component.onBackClick() }) {
-                        Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = null)
-                    }
-                }
-            )
-            val painterResource = asyncPainterResource(data = character.image)
-            KamelImage(
-                modifier = Modifier.weight(1f),
-                resource = painterResource,
-                contentDescription = "",
-                onFailure = {
-                    Image(
-                        imageVector = Icons.Default.Info,
-                        contentDescription = null
-                    )
-                }
-            )
-            Text("Character: ${character.name}")
+fun Character() {
+    val characterRepository : CharacterRepository = Inject.instance()
+    var items: List<Character> by remember { mutableStateOf(emptyList()) }
+    LaunchedEffect(Unit) {
+        CoroutineScope(Dispatchers.IO).launch {
+            items = characterRepository.fetch()
+        }
+    }
+    LazyColumn(modifier = Modifier.fillMaxSize()) {
+        items(items) {character ->
+            Card {
+                Text("Character: ${character.name}")
+            }
         }
     }
 }

@@ -24,14 +24,17 @@ object Dependencies {
     }
 
     object Ktor {
-        private const val version = "2.3.2"
+        private const val version = "1.6.8"
         const val core = "io.ktor:ktor-client-core:$version"
         const val json = "io.ktor:ktor-client-json:$version"
-        const val ios = "io.ktor:ktor-client-darwin:$version"
+        const val ios = "io.ktor:ktor-client-ios:$version"
         const val serialization = "io.ktor:ktor-client-serialization:$version"
         const val logging = "io.ktor:ktor-client-logging:$version"
         const val android = "io.ktor:ktor-client-android:$version"
         const val okhttp = "io.ktor:ktor-client-okhttp:$version"
+
+        //const val json = "io.ktor:ktor-serialization-kotlinx-json:$version"
+
     }
 
     object SqlDelight {

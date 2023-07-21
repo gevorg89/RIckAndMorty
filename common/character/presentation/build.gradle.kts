@@ -1,7 +1,6 @@
 plugins {
     id("multiplatform-compose-setup")
     id("android-setup").apply(false)
-    id("org.jetbrains.kotlin.plugin.parcelize")
 }
 
 kotlin {
@@ -9,7 +8,7 @@ kotlin {
         commonMain {
             dependencies {
                 implementation(project(":common:character:data"))
-                api(project(":common:core"))
+                implementation(project(":common:core"))
             }
         }
     }
@@ -18,6 +17,10 @@ kotlin {
 android {
     namespace = "com.gevorg89.rickandmorty.character.presentation"
     compileSdk = 33
+    defaultConfig {
+        minSdk = 24
+        targetSdk = 33
+    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
