@@ -25,11 +25,15 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(compose.runtime)
+                implementation(compose.ui)
                 implementation(compose.foundation)
                 implementation(compose.material)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
             }
+        }
+        val androidMain by getting {
+            dependsOn(commonMain)
         }
         val iosX64Main by getting
         val iosArm64Main by getting
