@@ -1,3 +1,3 @@
 interface CharacterRepository {
-    suspend fun fetch() : List<Character>
+    suspend fun fetch(page: Int): List<Character>
 }

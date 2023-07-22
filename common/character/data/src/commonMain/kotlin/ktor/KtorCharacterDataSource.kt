@@ -8,9 +8,9 @@ import io.ktor.client.request.get
 import mappers.toDomain
 
 class KtorCharacterDataSource(private val httpClient: HttpClient) {
-    suspend fun fetch(): List<Character> {
+    suspend fun fetch(page: Int): List<Character> {
         return runCatching {
-            val character = httpClient.get("/api/character").body<CharacterRemote>()
+            val character = httpClient.get("/api/character/?page=$page").body<CharacterRemote>()
             character.results.map { it.toDomain() }
         }.onFailure {
             emptyList<Character>()
