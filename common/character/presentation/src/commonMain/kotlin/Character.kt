@@ -5,9 +5,9 @@ import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import di.Inject
@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun Character() {
-    val characterRepository : CharacterRepository = Inject.instance()
+    val characterRepository: CharacterRepository = Inject.instance()
     var items: List<Character> by remember { mutableStateOf(emptyList()) }
     LaunchedEffect(Unit) {
         CoroutineScope(Dispatchers.IO).launch {
@@ -26,8 +26,8 @@ fun Character() {
         }
     }
     LazyColumn(modifier = Modifier.fillMaxSize()) {
-        items(items) {character ->
-            Card {
+        items(items) { character ->
+            Card(modifier = Modifier.fillMaxSize()) {
                 Text("Character: ${character.name}")
             }
         }
