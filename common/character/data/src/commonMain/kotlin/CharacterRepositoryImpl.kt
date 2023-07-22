@@ -5,7 +5,7 @@ class CharacterRepositoryImpl(
     private val remoteDataSource: KtorCharacterDataSource,
     private val localDataSource: KtorSqlDelightDataSource,
 ) : CharacterRepository {
-    override suspend fun fetch(): List<Character> {
-        return remoteDataSource.fetch()
+    override suspend fun fetch(page: Int): List<Character> {
+        return remoteDataSource.fetch(page)
     }
 }
