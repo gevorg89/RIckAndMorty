@@ -20,6 +20,8 @@ kotlin {
                 api(Dependencies.Kodein.core)
 
                 api(Dependencies.SqlDelight.core)
+
+                api(Dependencies.Kamel.kamel)
             }
         }
 
