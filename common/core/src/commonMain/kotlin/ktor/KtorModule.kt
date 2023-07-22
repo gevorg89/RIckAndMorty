@@ -1,17 +1,15 @@
 package ktor
 
-import di.Inject.instance
 import io.ktor.client.HttpClient
-import io.ktor.client.features.HttpTimeout
-import io.ktor.client.features.defaultRequest
-import io.ktor.client.features.json.JsonFeature
-import io.ktor.client.features.json.serializer.KotlinxSerializer
-import io.ktor.client.features.logging.LogLevel
-import io.ktor.client.features.logging.Logger
-import io.ktor.client.features.logging.Logging
-import io.ktor.client.features.logging.SIMPLE
-import io.ktor.client.request.url
-import io.ktor.http.URLProtocol
+import io.ktor.client.plugins.HttpTimeout
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.client.plugins.defaultRequest
+import io.ktor.client.plugins.logging.LogLevel
+import io.ktor.client.plugins.logging.Logger
+import io.ktor.client.plugins.logging.Logging
+import io.ktor.client.plugins.logging.SIMPLE
+import io.ktor.serialization.kotlinx.json.json
+import kotlinx.serialization.json.Json
 import org.kodein.di.DI
 import org.kodein.di.bind
 import org.kodein.di.singleton
@@ -24,8 +22,13 @@ internal val ktorModule = DI.Module("ktorModule") {
                 level = LogLevel.ALL
             }
 
-            install(JsonFeature) {
-                serializer = KotlinxSerializer(json = instance())
+            install(ContentNegotiation) {
+                json(
+                    Json {
+                        prettyPrint = true
+                        isLenient = true
+                    }
+                )
             }
 
             install(HttpTimeout) {
@@ -34,10 +37,7 @@ internal val ktorModule = DI.Module("ktorModule") {
             }
 
             defaultRequest {
-                url {
-                    protocol = URLProtocol.HTTPS
-                    host = "rickandmortyapi.com/"
-                }
+                url("https://rickandmortyapi.com/")
             }
         }
     }
