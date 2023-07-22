@@ -50,4 +50,9 @@ object Dependencies {
         const val gradlePlugin = "com.android.tools.build:gradle:8.0.2"
     }
 
+    //Image loader
+    object Kamel {
+        const val kamel = "media.kamel:kamel-image:0.7.0"
+    }
+
 }
