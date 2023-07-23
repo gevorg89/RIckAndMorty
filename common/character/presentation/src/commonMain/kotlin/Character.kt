@@ -114,8 +114,6 @@ fun Character() {
             }
     }
 
-
-
     LaunchedEffect(Unit) {
         loading.value = true
         characterRepository.characters.collectLatest {
