@@ -108,7 +108,7 @@ fun Character() {
     LaunchedEffect(listState) {
         snapshotFlow { listState.layoutInfo.visibleItemsInfo.lastOrNull()?.index }
             .collectLatest { index ->
-                if (!loading.value && index != null && items.isNotEmpty() && index >= items.size - 5) {
+                if (!loading.value && index != null && !fetch && index >= items.size - 5) {
                     fetch = true
                 }
             }
