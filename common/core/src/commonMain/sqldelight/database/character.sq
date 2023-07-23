@@ -11,5 +11,20 @@ selectAllCharacters:
 SELECT Character.*
 FROM Character;
 
+selectFirstCharacter:
+SELECT Character.*
+FROM Character
+LIMIT 1;
+
+selectCharacters:
+SELECT Character.*
+FROM Character
+LIMIT :limit
+OFFSET :offset;
+
+selectCount:
+SELECT COUNT(*)
+FROM Character;
+
 removeAllCharacters:
 DELETE FROM Character;
