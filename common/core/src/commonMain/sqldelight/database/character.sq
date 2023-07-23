@@ -1,0 +1,15 @@
+CREATE TABLE Character(
+    name TEXT,
+    image TEXT
+);
+
+insertCharacter:
+INSERT INTO Character(name, image)
+VALUES(?,?);
+
+selectAllCharacters:
+SELECT Character.*
+FROM Character;
+
+removeAllCharacters:
+DELETE FROM Character;
