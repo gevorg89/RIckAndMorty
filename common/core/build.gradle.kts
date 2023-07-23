@@ -2,6 +2,7 @@ plugins {
     id("multiplatform-setup")
     id("android-setup").apply(false)
     kotlin("plugin.serialization")
+    id("com.squareup.sqldelight")
 }
 
 kotlin {
@@ -39,6 +40,13 @@ kotlin {
             }
         }
 
+    }
+}
+
+sqldelight {
+    database("AppDatabase") {
+        packageName = "core.database"
+        sourceFolders = listOf("sqldelight")
     }
 }
 

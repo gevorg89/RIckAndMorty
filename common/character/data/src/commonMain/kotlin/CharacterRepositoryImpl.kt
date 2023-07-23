@@ -6,6 +6,16 @@ class CharacterRepositoryImpl(
     private val localDataSource: KtorSqlDelightDataSource,
 ) : CharacterRepository {
     override suspend fun fetch(page: Int): List<Character> {
-        return remoteDataSource.fetch(page)
+        val items = remoteDataSource.fetch(page)
+        items.forEach {character->
+            localDataSource.insertCharacter(character.name, character.image)
+        }
+        return localDataSource.selectAllCharacters().map {
+            Character(it.name.orEmpty(), it.image.orEmpty())
+        }
+    }
+
+    override suspend fun invalidate() {
+        localDataSource.removeAllCharacters()
     }
 }

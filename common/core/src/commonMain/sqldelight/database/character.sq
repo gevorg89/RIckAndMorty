@@ -1,35 +1,14 @@
 CREATE TABLE Character(
-    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     name TEXT,
     image TEXT
 );
 
 insertCharacter:
-INSERT INTO Character(id, name, image)
-VALUES(?,?,?);
+INSERT INTO Character(name, image)
+VALUES(?,?);
 
 selectAllCharacters:
 SELECT Character.*
-FROM Character;
-
-selectCharacter:
-SELECT Character.*
-FROM Character
-WHERE id = ?;
-
-selectFirstCharacter:
-SELECT Character.*
-FROM Character
-LIMIT 1;
-
-selectCharacters:
-SELECT Character.*
-FROM Character
-LIMIT :limit
-OFFSET :offset;
-
-selectCount:
-SELECT COUNT(*)
 FROM Character;
 
 removeAllCharacters:
