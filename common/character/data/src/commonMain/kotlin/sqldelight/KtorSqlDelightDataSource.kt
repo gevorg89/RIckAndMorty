@@ -13,7 +13,7 @@ class KtorSqlDelightDataSource(database: AppDatabase) {
         }
     }
 
-    internal fun insertCharacter(name : String, image: String) {
+    internal fun insertCharacter(name: String, image: String) {
         dbQuery.transaction {
             dbQuery.insertCharacter(name, image)
         }
@@ -21,5 +21,17 @@ class KtorSqlDelightDataSource(database: AppDatabase) {
 
     internal fun selectAllCharacters(): List<Character> {
         return dbQuery.selectAllCharacters().executeAsList()
+    }
+
+    internal fun selectCharacters(limit: Long = 20, offset: Long): List<Character> {
+        return dbQuery.selectCharacters(limit, offset).executeAsList()
+    }
+
+    internal fun selectCount(): Long {
+        return dbQuery.selectCount().executeAsOne()
+    }
+
+    internal fun selectFirst(): Character? {
+        return dbQuery.selectFirstCharacter().executeAsOneOrNull()
     }
 }
