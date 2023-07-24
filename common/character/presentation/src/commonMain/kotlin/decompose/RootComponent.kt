@@ -10,7 +10,7 @@ import com.arkivanov.decompose.router.stack.push
 import com.arkivanov.essenty.parcelable.Parcelable
 import com.arkivanov.essenty.parcelable.Parcelize
 
-interface RootComponent {
+interface RootComponent2 {
     val stack: Value<ChildStack<*, Child>>
 
     fun onBackClicked(toIndex: Int)
@@ -21,13 +21,13 @@ interface RootComponent {
     }
 }
 
-class DefaultRootComponent(
+class DefaultRootComponent2(
     componentContext: ComponentContext,
-) : RootComponent, ComponentContext by componentContext {
+) : RootComponent2, ComponentContext by componentContext {
 
     private val navigation = StackNavigation<Config>()
 
-    override val stack: Value<ChildStack<*, RootComponent.Child>> =
+    override val stack: Value<ChildStack<*, RootComponent2.Child>> =
         childStack(
             source = navigation,
             initialConfiguration = Config.List, // The initial child component is List
@@ -35,10 +35,10 @@ class DefaultRootComponent(
             childFactory = ::child,
         )
 
-    private fun child(config: Config, componentContext: ComponentContext): RootComponent.Child =
+    private fun child(config: Config, componentContext: ComponentContext): RootComponent2.Child =
         when (config) {
-            is Config.List -> RootComponent.Child.ListChild(listComponent(componentContext))
-            is Config.Details -> RootComponent.Child.DetailsChild(
+            is Config.List -> RootComponent2.Child.ListChild(listComponent(componentContext))
+            is Config.Details -> RootComponent2.Child.DetailsChild(
                 detailsComponent(
                     componentContext,
                     config

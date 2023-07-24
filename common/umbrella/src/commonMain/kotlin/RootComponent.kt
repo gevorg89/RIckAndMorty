@@ -59,10 +59,7 @@ class DefaultRootComponent(
     private fun detailsComponent(componentContext: ComponentContext, config: Config.Details): DetailsComponent =
         DefaultDetailsComponent(
             componentContext = componentContext,
-            id = config.item,
-            onBackClicked = {
-                onBackClicked(0)
-            }
+            id = config.item
         )
 
     override fun onBackClicked(toIndex: Int) {

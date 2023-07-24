@@ -1,8 +1,8 @@
 import SwiftUI
-//import shared
+import shared
 
 struct ContentView: View {
-    private let root: DefaultRootComponent
+    private let root: RootComponent
     init(_ root: RootComponent) {
             self.root = root
     }

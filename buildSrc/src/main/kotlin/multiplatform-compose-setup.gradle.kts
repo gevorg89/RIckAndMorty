@@ -19,6 +19,8 @@ kotlin {
             isStatic = true
             binaryOption("bundleId", "com.example.common.umbrella")
             export(Dependencies.Decompose.decompose)
+            export("com.arkivanov.essenty:lifecycle:1.1.0")
+            export("com.arkivanov.essenty:state-keeper:1.1.0")
         }
     }
 
@@ -66,7 +68,7 @@ kotlin {
             iosSimulatorArm64Main.dependsOn(this)
 
             dependencies {
-
+                implementation("com.arkivanov.parcelize.darwin:runtime:0.1.4")
             }
         }
     }
