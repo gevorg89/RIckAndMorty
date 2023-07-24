@@ -13,20 +13,15 @@ class CharacterRepositoryImpl(
 
     ) : CharacterRepository {
 
-    private val _characters: MutableStateFlow<List<Character>> = MutableStateFlow(emptyList())
-    override val characters = _characters
-
     override suspend fun fetch(page: Int): Unit = withContext(Dispatchers.IO) {
         runCatching {
             fetchAndSave(page)
         }
     }
 
-    override suspend fun getCharacters(limit: Long, offset: Long) {
-        _characters.update {
-            localDataSource.selectCharacters(limit, offset).map {
-                Character(it.name.orEmpty(), it.image.orEmpty())
-            }
+    override suspend fun getCharacters(limit: Long, offset: Long) : List<Character> {
+        return localDataSource.selectCharacters(limit, offset).map {
+            Character(it.name.orEmpty(), it.image.orEmpty())
         }
     }
 

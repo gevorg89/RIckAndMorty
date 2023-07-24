@@ -20,11 +20,12 @@ class MockVM(characterRepository: CharacterRepository) {
     private val _state = MutableStateFlow(UiState())
     val state = _state.asStateFlow()
 
-    private val paging = Paging(characterRepository)
+    private val paging = CharactersPaging(characterRepository)
+
 
     init {
         fetch()
-        characterRepository.characters
+        paging.items
             .onStart {
                 delay(5000)
             }
@@ -53,7 +54,7 @@ class MockVM(characterRepository: CharacterRepository) {
         scope.launch {
             logging().w { "fetch call" }
             _state.update { it.copy(appending = true) }
-            paging.fetch()
+            paging.checkLoad()
         }
     }
 
