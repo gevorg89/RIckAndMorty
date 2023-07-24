@@ -5,4 +5,5 @@ interface CharacterRepository {
     suspend fun selectFirst(): Character?
     suspend fun selectCount(): Long
     suspend fun getCharacters(limit: Long, offset: Long): List<Character>
+    suspend fun getCharacter(id: Long): Character
 }
