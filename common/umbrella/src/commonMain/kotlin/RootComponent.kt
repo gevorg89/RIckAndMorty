@@ -1,5 +1,3 @@
-package decompose
-
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.decompose.ComponentContext
@@ -9,8 +7,12 @@ import com.arkivanov.decompose.router.stack.popTo
 import com.arkivanov.decompose.router.stack.push
 import com.arkivanov.essenty.parcelable.Parcelable
 import com.arkivanov.essenty.parcelable.Parcelize
+import decompose.DefaultDetailsComponent
+import decompose.DefaultListComponent
+import decompose.DetailsComponent
+import decompose.ListComponent
 
-interface RootComponent2 {
+interface RootComponent {
     val stack: Value<ChildStack<*, Child>>
 
     fun onBackClicked(toIndex: Int)
@@ -21,13 +23,13 @@ interface RootComponent2 {
     }
 }
 
-class DefaultRootComponent2(
+class DefaultRootComponent(
     componentContext: ComponentContext,
-) : RootComponent2, ComponentContext by componentContext {
+) : RootComponent, ComponentContext by componentContext {
 
     private val navigation = StackNavigation<Config>()
 
-    override val stack: Value<ChildStack<*, RootComponent2.Child>> =
+    override val stack: Value<ChildStack<*, RootComponent.Child>> =
         childStack(
             source = navigation,
             initialConfiguration = Config.List, // The initial child component is List
@@ -35,10 +37,10 @@ class DefaultRootComponent2(
             childFactory = ::child,
         )
 
-    private fun child(config: Config, componentContext: ComponentContext): RootComponent2.Child =
+    private fun child(config: Config, componentContext: ComponentContext): RootComponent.Child =
         when (config) {
-            is Config.List -> RootComponent2.Child.ListChild(listComponent(componentContext))
-            is Config.Details -> RootComponent2.Child.DetailsChild(
+            is Config.List -> RootComponent.Child.ListChild(listComponent(componentContext))
+            is Config.Details -> RootComponent.Child.DetailsChild(
                 detailsComponent(
                     componentContext,
                     config

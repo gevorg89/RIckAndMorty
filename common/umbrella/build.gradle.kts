@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     id("multiplatform-compose-setup")
     id("android-setup").apply(false)
+    id("kotlin-parcelize")
 }
 
 kotlin {
@@ -10,21 +11,19 @@ kotlin {
         commonMain {
             dependencies {
                 api(project(":common:core"))
-                implementation(project(":common:character:data"))
                 api(project(":common:character:presentation"))
-//                api("org.kodein.di:kodein-di-framework-compose:7.20.2")
+                implementation(project(":common:character:data"))
+                implementation("com.arkivanov.parcelize.darwin:runtime:0.1.4")
             }
         }
 
         androidMain {
             dependencies {
-//                implementation(Dependencies.Ktor.android)
             }
         }
 
         iosMain {
             dependencies {
-//                implementation(Dependencies.Ktor.ios)
             }
         }
 

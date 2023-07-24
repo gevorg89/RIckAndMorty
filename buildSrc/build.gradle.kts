@@ -14,6 +14,7 @@ dependencies {
     implementation(Dependencies.Android.gradlePlugin)
     implementation(Dependencies.Kotlin.Serialization.gradlePlugin)
     implementation(Dependencies.SqlDelight.gradlePlugin)
+    implementation("com.arkivanov.parcelize.darwin:gradle-plugin:0.1.4")
 }
 
 kotlin {

@@ -4,7 +4,6 @@ import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.fade
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.plus
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.scale
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.stackAnimation
-import decompose.RootComponent
 
 @Composable
 fun RootContent(component: RootComponent) {

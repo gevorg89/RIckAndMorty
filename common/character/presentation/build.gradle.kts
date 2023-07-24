@@ -9,7 +9,8 @@ kotlin {
         commonMain {
             dependencies {
                 implementation(project(":common:character:data"))
-                implementation(project(":common:core"))
+                api(project(":common:core"))
+//                api(project(":common:umbrella"))
             }
         }
     }
