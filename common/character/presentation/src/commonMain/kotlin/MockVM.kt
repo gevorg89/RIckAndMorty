@@ -13,12 +13,14 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.lighthousegames.logging.logging
 
-class MockVM(private val characterRepository: CharacterRepository) {
+class MockVM(characterRepository: CharacterRepository) {
 
     private val scope = CoroutineScope(Dispatchers.Default + SupervisorJob())
 
     private val _state = MutableStateFlow(UiState())
     val state = _state.asStateFlow()
+
+    private val paging = Paging(characterRepository)
 
     init {
         fetch()
@@ -42,7 +44,7 @@ class MockVM(private val characterRepository: CharacterRepository) {
 
     fun invalidate() {
         scope.launch {
-            characterRepository.invalidate()
+            paging.invalidate()
             fetch()
         }
     }
@@ -51,7 +53,7 @@ class MockVM(private val characterRepository: CharacterRepository) {
         scope.launch {
             logging().w { "fetch call" }
             _state.update { it.copy(appending = true) }
-            characterRepository.fetch()
+            paging.fetch()
         }
     }
 
