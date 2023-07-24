@@ -7,14 +7,11 @@ class CharactersPaging(private val characterRepository: CharacterRepository) : P
     }
 
     override suspend fun checkForFetch(): Boolean {
-        val firstRemote = characterRepository.fetchFirstRemote()
-        val firstLocal = characterRepository.selectFirst()
-        if (firstLocal == null) {
-            return true
-        } else if (firstLocal.name != firstRemote.name) {
-            return true
-        }
-        return false
+        return runCatching {
+            val firstRemote = characterRepository.fetchFirstRemote()
+            val firstLocal = characterRepository.selectFirst()
+            firstLocal == null || firstLocal.name != firstRemote.name
+        }.getOrDefault(false)
     }
 
     override suspend fun getLocalCount(): Long {
