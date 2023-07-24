@@ -18,7 +18,7 @@ kotlin {
             baseName = "shared"
             isStatic = true
             binaryOption("bundleId", "com.example.common.umbrella")
-            export("com.arkivanov.decompose:decompose:2.0.0")
+            export(Dependencies.Decompose.decompose)
         }
     }
 
