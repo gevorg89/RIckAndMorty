@@ -6,11 +6,13 @@ import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import mappers.toDomain
+import org.lighthousegames.logging.logging
 
 class KtorCharacterDataSource(private val httpClient: HttpClient) {
 
     suspend fun fetch(page: Int, count: Int = 20): List<Character> {
         return runCatching {
+            logging().w { "fetch call page:$page" }
             val character =
                 httpClient.get("/api/character/?page=$page&count=$count").body<CharacterRemote>()
             character.results.map { it.toDomain() }
