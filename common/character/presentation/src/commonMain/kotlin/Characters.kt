@@ -40,7 +40,12 @@ import org.lighthousegames.logging.logging
 @Composable
 fun Characters(component: ListComponent) {
     val state by component.model.subscribeAsState()
+    //val characterRepository: CharacterRepository = Inject.instance()
+    //val mockVM by remember { mutableStateOf(MockVM(characterRepository)) }
     val listState = rememberLazyListState()
+
+    //val state by mockVM.state.collectAsState()
+
     if (state.loading) {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             Text("Loading...", fontSize = 26.sp)

@@ -15,7 +15,6 @@ import kotlinx.coroutines.launch
 
 interface DetailsComponent {
     val model: Value<Model>
-    fun onBackClick()
 
     @Immutable
     data class Model(
@@ -26,20 +25,15 @@ interface DetailsComponent {
 class DefaultDetailsComponent(
     componentContext: ComponentContext,
     val id: Long,
-    val onBackClicked:()-> Unit,
 ) : DetailsComponent {
 
     private val scope = CoroutineScope(Dispatchers.Default + SupervisorJob())
 
-    private val characterRepository: CharacterRepository by lazy { Inject.instance() }
+    private val characterRepository: CharacterRepository = Inject.instance()
 
     private val _state = MutableValue(DetailsComponent.Model(null))
 
     override val model: Value<DetailsComponent.Model> = _state
-
-    override fun onBackClick() {
-        onBackClicked()
-    }
 
     init {
         scope.launch {

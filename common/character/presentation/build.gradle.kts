@@ -1,6 +1,7 @@
 plugins {
     id("multiplatform-compose-setup")
     id("android-setup").apply(false)
+    id("org.jetbrains.kotlin.plugin.parcelize")
 }
 
 kotlin {

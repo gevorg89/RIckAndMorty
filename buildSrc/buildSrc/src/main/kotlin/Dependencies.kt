@@ -55,4 +55,10 @@ object Dependencies {
         const val lgging = "org.lighthousegames:logging:1.3.0"
     }
 
+    object Decompose {
+        private const val version = "2.0.0-compose-experimental"
+        const val decompose = "com.arkivanov.decompose:decompose:$version"
+        const val extension = "com.arkivanov.decompose:extensions-compose-jetbrains:$version"
+    }
+
 }

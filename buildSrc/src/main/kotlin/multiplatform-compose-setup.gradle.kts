@@ -18,8 +18,26 @@ kotlin {
             baseName = "shared"
             isStatic = true
             binaryOption("bundleId", "com.example.common.umbrella")
+            export("com.arkivanov.decompose:decompose:2.0.0")
         }
     }
+
+/*    targets
+        .filterIsInstance<KotlinNativeTarget>()
+        .filter { it.konanTarget.family == Family.IOS }
+        .forEach {
+            it.binaries.framework {
+
+                export("com.arkivanov.decompose:decompose:2.0.0")
+//                export("com.arkivanov.essenty:lifecycle:<essenty_version>")
+
+                // Optional, only if you need state preservation on Darwin (Apple) targets
+//                export("com.arkivanov.essenty:state-keeper:<essenty_version>")
+
+                // Optional, only if you need state preservation on Darwin (Apple) targets
+//                export("com.arkivanov.parcelize.darwin:runtime:<parcelize_darwin_version>")
+            }
+        }*/
 
     sourceSets {
         val commonMain by getting {
@@ -30,6 +48,9 @@ kotlin {
                 implementation(compose.material)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+
+                api(Dependencies.Decompose.decompose)
+                api(Dependencies.Decompose.extension)
             }
         }
         val androidMain by getting {

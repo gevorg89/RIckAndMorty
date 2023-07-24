@@ -19,9 +19,13 @@ class CharacterRepositoryImpl(
         }
     }
 
-    override suspend fun getCharacters(limit: Long, offset: Long) : List<Character> {
+    override suspend fun getCharacter(id: Long): Character {
+        return localDataSource.selectCharacter(id).toDomain()
+    }
+
+    override suspend fun getCharacters(limit: Long, offset: Long): List<Character> {
         return localDataSource.selectCharacters(limit, offset).map {
-            Character(it.name.orEmpty(), it.image.orEmpty())
+            Character(it.id, it.name.orEmpty(), it.image.orEmpty())
         }
     }
 
@@ -44,7 +48,7 @@ class CharacterRepositoryImpl(
     private suspend fun fetchAndSave(page: Int) {
         val items = remoteDataSource.fetch(page)
         items.forEach { character ->
-            localDataSource.insertCharacter(character.name, character.image)
+            localDataSource.insertCharacter(character.id, character.name, character.image)
         }
     }
 }

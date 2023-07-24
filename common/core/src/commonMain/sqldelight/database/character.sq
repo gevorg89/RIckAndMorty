@@ -1,15 +1,21 @@
 CREATE TABLE Character(
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     name TEXT,
     image TEXT
 );
 
 insertCharacter:
-INSERT INTO Character(name, image)
-VALUES(?,?);
+INSERT INTO Character(id, name, image)
+VALUES(?,?,?);
 
 selectAllCharacters:
 SELECT Character.*
 FROM Character;
+
+selectCharacter:
+SELECT Character.*
+FROM Character
+WHERE id = ?;
 
 selectFirstCharacter:
 SELECT Character.*
