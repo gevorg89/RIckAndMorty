@@ -14,7 +14,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 dependencies {
-
+                    api(Dependencies.Logging.lgging)
                 }
             }
         }

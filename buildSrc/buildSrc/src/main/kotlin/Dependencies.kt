@@ -51,4 +51,8 @@ object Dependencies {
         const val kamel = "media.kamel:kamel-image:0.7.0"
     }
 
+    object Logging {
+        const val lgging = "org.lighthousegames:logging:1.3.0"
+    }
+
 }
