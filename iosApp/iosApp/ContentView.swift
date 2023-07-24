@@ -2,7 +2,10 @@ import SwiftUI
 //import shared
 
 struct ContentView: View {
-	//let greet = Greeting().greet()
+    private let root: DefaultRootComponent
+    init(_ root: RootComponent) {
+            self.root = root
+    }
 
 	var body: some View {
 		ComposeView()

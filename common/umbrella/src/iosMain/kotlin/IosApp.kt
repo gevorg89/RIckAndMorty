@@ -3,5 +3,5 @@ import platform.PlatformConfiguration
 
 fun MainViewController() = ComposeUIViewController {
     PlatformSDK.init(PlatformConfiguration())
-    App()
+    App(TODO())
 }

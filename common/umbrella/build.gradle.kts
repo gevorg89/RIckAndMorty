@@ -9,9 +9,9 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                implementation(project(":common:core"))
+                api(project(":common:core"))
                 implementation(project(":common:character:data"))
-                implementation(project(":common:character:presentation"))
+                api(project(":common:character:presentation"))
 //                api("org.kodein.di:kodein-di-framework-compose:7.20.2")
             }
         }
