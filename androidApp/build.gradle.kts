@@ -42,9 +42,6 @@ android {
 dependencies {
     implementation(project(":common:umbrella"))
     implementation("org.kodein.di:kodein-di-framework-android-x:7.20.2")
-//    implementation("androidx.compose.ui:ui:1.4.3")
-//    implementation("androidx.compose.ui:ui-tooling:1.4.3")
-//    implementation("androidx.compose.ui:ui-tooling-preview:1.4.3")
     implementation("androidx.compose.foundation:foundation:1.4.3")
     implementation("androidx.compose.material:material:1.4.3")
     implementation("androidx.activity:activity-compose:1.7.2")
