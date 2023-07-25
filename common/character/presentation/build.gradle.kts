@@ -10,7 +10,6 @@ kotlin {
             dependencies {
                 implementation(project(":common:character:data"))
                 api(project(":common:core"))
-//                api(project(":common:umbrella"))
             }
         }
     }
@@ -19,10 +18,6 @@ kotlin {
 android {
     namespace = "com.gevorg89.rickandmorty.character.presentation"
     compileSdk = 33
-    defaultConfig {
-        minSdk = 24
-        targetSdk = 33
-    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17

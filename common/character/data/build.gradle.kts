@@ -18,10 +18,6 @@ kotlin {
 android {
     namespace = "com.gevorg89.rickandmorty.character.data"
     compileSdk = 33
-    defaultConfig {
-        minSdk = 24
-        targetSdk = 33
-    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
