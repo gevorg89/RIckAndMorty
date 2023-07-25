@@ -9,20 +9,20 @@ struct iOSApp: App {
         rootHolder = RootHolder()
     }
     
-//    @UIApplicationDelegateAdaptor(AppDelegate.self)
-//        var appDelegate: AppDelegate
+    @Environment(\.scenePhase)
+        var scenePhase: ScenePhase
     
 	var body: some Scene {
 		WindowGroup {
             ContentView(rootHolder.root)
-//                .onChange(of: scenePhase) { newPhase in
-//                                    switch newPhase {
-//                                    case .background: LifecycleRegistryExtKt.stop(rootHolder.lifecycle)
-//                                    case .inactive: LifecycleRegistryExtKt.pause(rootHolder.lifecycle)
-//                                    case .active: LifecycleRegistryExtKt.resume(rootHolder.lifecycle)
-//                                    @unknown default: break
-//                                    }
-//                                }
+                .onChange(of: scenePhase) { newPhase in
+                                    switch newPhase {
+                                    case .background: LifecycleRegistryExtKt.stop(rootHolder.lifecycle)
+                                    case .inactive: LifecycleRegistryExtKt.pause(rootHolder.lifecycle)
+                                    case .active: LifecycleRegistryExtKt.resume(rootHolder.lifecycle)
+                                    @unknown default: break
+                                    }
+                                }
 		}
 	}
 }
