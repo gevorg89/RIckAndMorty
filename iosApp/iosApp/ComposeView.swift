@@ -11,10 +11,14 @@ import SwiftUI
 import shared
 
 struct ComposeView: UIViewControllerRepresentable{
+    private let root: RootComponent
+    init(_ root: RootComponent) {
+            self.root = root
+    }
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
     }
 
     func makeUIViewController(context: Context) -> some UIViewController {
-        IosAppKt.MainViewController()
+        IosAppKt.MainViewController(root: root)
     }
 }

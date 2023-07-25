@@ -1,4 +1,6 @@
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.input.KeyboardType.Companion.Text
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.Children
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.fade
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.plus
@@ -11,7 +13,7 @@ fun RootContent(component: RootComponent) {
         stack = component.stack,
         animation = stackAnimation(fade() + scale())
     ) {
-        when(val child = it.instance) {
+        when (val child = it.instance) {
             is RootComponent.Child.ListChild -> Characters(child.component)
             is RootComponent.Child.DetailsChild -> Character(child.component)
         }

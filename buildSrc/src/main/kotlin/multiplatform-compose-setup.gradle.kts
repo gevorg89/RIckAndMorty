@@ -60,7 +60,11 @@ kotlin {
         }
         val iosX64Main by getting
         val iosArm64Main by getting
-        val iosSimulatorArm64Main by getting
+        val iosSimulatorArm64Main by getting {
+            dependencies {
+
+            }
+        }
         val iosMain by getting {
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)
@@ -68,7 +72,6 @@ kotlin {
             iosSimulatorArm64Main.dependsOn(this)
 
             dependencies {
-                implementation("com.arkivanov.parcelize.darwin:runtime:0.1.4")
             }
         }
     }

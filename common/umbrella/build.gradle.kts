@@ -13,7 +13,7 @@ kotlin {
                 api(project(":common:core"))
                 api(project(":common:character:presentation"))
                 implementation(project(":common:character:data"))
-                implementation("com.arkivanov.parcelize.darwin:runtime:0.1.4")
+
             }
         }
 
