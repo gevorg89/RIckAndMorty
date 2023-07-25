@@ -12,7 +12,15 @@ kotlin {
                 api(project(":common:core"))
                 api(project(":common:character:presentation"))
                 implementation(project(":common:character:data"))
+            }
+        }
+        androidMain {
+            dependencies {
+                api(Dependencies.Compose.activity)
+                api(Dependencies.Compose.foundation)
+                api(Dependencies.Compose.material)
 
+                api(Dependencies.Kodein.android)
             }
         }
     }

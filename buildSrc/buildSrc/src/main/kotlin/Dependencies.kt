@@ -1,7 +1,9 @@
 object Dependencies {
 
     object Kodein {
-        const val core = "org.kodein.di:kodein-di:7.20.2"
+        private const val version = "7.20.2"
+        const val core = "org.kodein.di:kodein-di:$version"
+        const val android = "org.kodein.di:kodein-di-framework-android-x:$version"
     }
 
     object Kotlin {
@@ -14,13 +16,17 @@ object Dependencies {
         }
 
         object Coroutines {
-            private const val version = "1.7.2"
-            const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
+            const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2"
         }
     }
 
     object Compose {
         const val gradlePlugin = "org.jetbrains.compose:compose-gradle-plugin:1.4.0"
+        const val activity = "androidx.activity:activity-compose:1.7.2"
+
+        private const val uiVersion = "1.4.3"
+        const val foundation = "androidx.compose.foundation:foundation:$uiVersion"
+        const val material = "androidx.compose.material:material:$uiVersion"
     }
 
     object Ktor {
@@ -31,7 +37,6 @@ object Dependencies {
         const val ios = "io.ktor:ktor-client-darwin:$version"
         const val logging = "io.ktor:ktor-client-logging:$version"
         const val android = "io.ktor:ktor-client-android:$version"
-        const val okhttp = "io.ktor:ktor-client-okhttp:$version"
     }
 
     object SqlDelight {
