@@ -22,10 +22,6 @@ kotlin {
 android {
     namespace = "com.gevorg89.rickandmorty.character.api"
     compileSdk = 33
-    defaultConfig {
-        minSdk = 24
-        targetSdk = 33
-    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
