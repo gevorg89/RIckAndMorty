@@ -5,7 +5,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-fun App(root: DefaultRootComponent) {
+fun App(root: RootComponent) {
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         RootContent(root)
     }

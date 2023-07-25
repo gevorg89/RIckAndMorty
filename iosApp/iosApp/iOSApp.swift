@@ -3,7 +3,12 @@ import shared
 
 @main
 struct iOSApp: App {
-    let rootHolder: RootHolder = RootHolder()
+    let rootHolder: RootHolder
+    init() {
+        PlatformSDK().doInit(configuration: CorePlatformConfiguration())
+        rootHolder = RootHolder()
+    }
+    
 //    @UIApplicationDelegateAdaptor(AppDelegate.self)
 //        var appDelegate: AppDelegate
     

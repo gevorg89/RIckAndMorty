@@ -29,7 +29,7 @@ class DefaultDetailsComponent(
 
     private val scope = CoroutineScope(Dispatchers.Default + SupervisorJob())
 
-    private val characterRepository: CharacterRepository = Inject.instance()
+    private val characterRepository: CharacterRepository by lazy { Inject.instance() }
 
     private val _state = MutableValue(DetailsComponent.Model(null))
 

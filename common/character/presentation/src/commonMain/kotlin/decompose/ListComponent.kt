@@ -48,8 +48,8 @@ class DefaultListComponent(
     private val scope = CoroutineScope(Dispatchers.Default + SupervisorJob())
 
     //TODO("Change di to get pager")
-    private val characterRepository: CharacterRepository = Inject.instance()
-    private val paging = CharactersPaging(characterRepository)
+    private val characterRepository: CharacterRepository by lazy { Inject.instance() }
+    private val paging by lazy { CharactersPaging(characterRepository) }
 
     override val model: Value<ListComponent.Model> = _state
 
