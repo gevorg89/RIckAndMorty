@@ -6,7 +6,6 @@ plugins {
 }
 
 kotlin {
-
     sourceSets {
         commonMain {
             dependencies {
@@ -16,18 +15,6 @@ kotlin {
 
             }
         }
-
-        androidMain {
-            dependencies {
-            }
-        }
-
-        iosMain {
-            dependencies {
-            }
-        }
-
-
     }
 }
 

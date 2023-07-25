@@ -59,6 +59,10 @@ object Dependencies {
         private const val version = "2.0.0-compose-experimental"
         const val decompose = "com.arkivanov.decompose:decompose:$version"
         const val extension = "com.arkivanov.decompose:extensions-compose-jetbrains:$version"
+
+        private const val versionEssenty = "1.1.0"
+        const val essentyLifecycle = "com.arkivanov.essenty:lifecycle:$versionEssenty"
+        const val essentyStateKeeper = "com.arkivanov.essenty:state-keeper:$versionEssenty"
     }
 
 }
