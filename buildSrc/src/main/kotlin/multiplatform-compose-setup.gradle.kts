@@ -17,7 +17,7 @@ kotlin {
 
             baseName = "shared"
             isStatic = true
-            binaryOption("bundleId", "com.example.common.umbrella")
+            binaryOption("bundleId", "common.umbrella")
             export(Dependencies.Decompose.decompose)
             export(Dependencies.Decompose.essentyLifecycle)
             export(Dependencies.Decompose.essentyStateKeeper)
@@ -37,9 +37,6 @@ kotlin {
                 api(Dependencies.Decompose.decompose)
                 api(Dependencies.Decompose.extension)
             }
-        }
-        val androidMain by getting {
-            dependsOn(commonMain)
         }
         val iosX64Main by getting
         val iosArm64Main by getting
