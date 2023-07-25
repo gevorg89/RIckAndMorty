@@ -1,6 +1,4 @@
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.text.input.KeyboardType.Companion.Text
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.Children
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.fade
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.plus
