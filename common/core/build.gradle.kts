@@ -52,10 +52,4 @@ sqldelight {
 
 android {
     namespace = "com.gevorg89.rickandmorty.core"
-    compileSdk = 33
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
 }

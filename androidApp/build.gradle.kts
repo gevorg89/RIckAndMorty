@@ -6,11 +6,8 @@ plugins {
 
 android {
     namespace = "com.gevorg89.rickandmorty.android"
-    compileSdk = 33
     defaultConfig {
         applicationId = "com.gevorg89.rickandmorty.android"
-        minSdk = 24
-        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
     }
@@ -29,13 +26,6 @@ android {
         getByName("release") {
             isMinifyEnabled = false
         }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
     }
 }
 
